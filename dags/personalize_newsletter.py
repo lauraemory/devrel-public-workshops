@@ -78,6 +78,8 @@ from airflow.sdk import dag
         "retry_delay": duration(minutes=3),
     },  
 )
+
+@asset(schedule=[formatted_newsletter])
 def personalize_newsletter():
     @task
     def get_user_info() -> list[dict]:
